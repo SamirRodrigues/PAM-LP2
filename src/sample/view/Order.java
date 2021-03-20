@@ -7,6 +7,13 @@ public class Order {
     private SimpleStringProperty name;
     private int id;
     private int pack;
+    private SimpleStringProperty description;
+
+    public String getDescription() { return description.get(); }
+
+    public SimpleStringProperty descriptionProperty() { return description; }
+
+    public void setDescription(String description) { this.description.set(description); }
 
     public String getName() { return name.get(); }
 
@@ -26,5 +33,6 @@ public class Order {
         this.name = new SimpleStringProperty(name);
         this.id = id;
         this.pack = pack;
+        this.description = new SimpleStringProperty("Empty");
     }
 }

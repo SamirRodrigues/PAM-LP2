@@ -30,10 +30,19 @@ public class ViewAgencyController implements Initializable {
     //Test Variable
     public Order[] orders = new Order[20];
 
+    private Order selectedOrder;
+    public Label idDetailOrder = new Label();
+    public Label nameDetailOrder = new Label();
+    public Label packDetailOrder = new Label();
+    public Label descriptionDetailOrder = new Label();
 
 
-    // Start Register Menu Options
 
+
+
+    // ## Start Register Menu Options ##
+
+    //Esse metodo Inicia a janela de cadastro de uma nova empresa parceira
     public void RegisterNewCompany() throws IOException {
         Parent tripViewParent = FXMLLoader.load(getClass().getResource("companyRegister.fxml")); // Carregando o arquivo fxml
 
@@ -43,7 +52,7 @@ public class ViewAgencyController implements Initializable {
         window.setScene(new Scene(tripViewParent));
         window.show();
     }
-
+    //Esse metodo Inicia a janela de cadastro de um(a) novo(a) fotografo(a) parceiro(a)
     public void RegisterNewPhotographer() throws IOException {
         Parent tripViewParent = FXMLLoader.load(getClass().getResource("photographerRegister.fxml")); // Carregando o arquivo fxml
 
@@ -54,10 +63,11 @@ public class ViewAgencyController implements Initializable {
         window.show();
     }
 
-    // End Register Menu Options
+    // ## End Register Menu Options ##
 
-    // Start Agency Body View
+    // ## Start Agency Body View ##
 
+    //Gera a lista teste de fotografos parceiros
     private ObservableList<Photographer> getPhotographer() {
         ObservableList<Photographer> p = FXCollections.observableArrayList();
         p.add(new Photographer(1,"Samir"));
@@ -67,7 +77,7 @@ public class ViewAgencyController implements Initializable {
 
         return p;
     }
-
+    //Gera a lista teste de Pedidos
     private ObservableList<Order> getOrder() {
         ObservableList<Order> o = FXCollections.observableArrayList();
         o.add(new Order(1,"Luiz",1));
@@ -82,8 +92,7 @@ public class ViewAgencyController implements Initializable {
         }
         return o;
     }
-
-
+    //Gera lista filtrada dos fotografos com os pedidos relacionados
     private  ObservableList<Order> setOrder(Photographer p, Order[] orders) {
         ObservableList<Order> o = FXCollections.observableArrayList();
 
@@ -91,22 +100,39 @@ public class ViewAgencyController implements Initializable {
         {
             if (i!= null && p.getId() == i.getId())
             {
+                i.setDescription("Descrição do pedido de " +  i.getName());
                 o.add(i);
             }
         }
         return o;
     }
 
-    public void ButtonAction() throws IOException
-    {
+
+    //Esse metodo recebe um pedido para inicializar a janela de detalhamento com os dados desse pedido
+    public void initData(Order order) {
+        selectedOrder = order;
+        idDetailOrder.setText(String.valueOf(selectedOrder.getId()));
+        nameDetailOrder.setText(selectedOrder.getName());
+        packDetailOrder.setText(String.valueOf(selectedOrder.getPack()));
+        descriptionDetailOrder.setText(selectedOrder.getDescription());
+
+    }
+
+
+    //Executa a filtragem dos fotografos com os pedidos relacionados
+    public void ButtonAction1() throws IOException {
         idOrder.setCellValueFactory(new PropertyValueFactory<Order, Integer>("id"));
         nameOrder.setCellValueFactory(new PropertyValueFactory<Order, String>("name"));
         packOrder.setCellValueFactory(new PropertyValueFactory<Order, Integer>("pack"));
         getOrder();
         orderList.setItems(setOrder(photoList.getSelectionModel().getSelectedItem(),orders));
     }
+    //Executa o detalhamento dos pedidos
+    public void ButtonAction2() throws IOException {
+        initData(orderList.getSelectionModel().getSelectedItem());
+    }
 
-    // End Agency Body View
+    // ## End Agency Body View ##
 
 
     @Override
