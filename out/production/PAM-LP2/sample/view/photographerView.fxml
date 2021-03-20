@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="519.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.view.ViewPhotoController">
+  <children>
+    <MenuBar prefWidth="900.0" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Cadastros">
+          <items>
+            <MenuItem mnemonicParsing="false" onAction="#RegisterNewTrip" text="Passeio" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#RegisterNewClient" text="Cliente" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Relatórios">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Informações Gerais" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Resumo Mensal" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Por Empresa" />
+          </items>
+        </Menu>
+      </menus>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+    </MenuBar>
+    <SplitPane dividerPositions="0.2505567928730512, 0.5" focusTraversable="true" prefHeight="450.0" prefWidth="900.0" VBox.vgrow="ALWAYS">
+      <items>
+            <ScrollPane fx:id="tripList" prefHeight="644.0" prefWidth="223.0">
+               <content>
+                  <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="540.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Lista de Viagens" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x11" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+            <ScrollPane prefHeight="644.0" prefWidth="218.0">
+               <content>
+                  <AnchorPane id="Content" prefHeight="540.0" prefWidth="200.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Lista de Pedidos" textAlignment="CENTER" wrapText="false">
+                           <font>
+                              <Font size="18.0" fx:id="x111" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+        <AnchorPane prefHeight="551.0" prefWidth="281.0">
+          <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" style="&#10;" text="Detalhes do Pedido" textAlignment="CENTER" wrapText="false">
+                     <font>
+                <Font size="18.0" fx:id="x1" />
+                     </font></Label>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+    <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="13.0" prefWidth="900.0" spacing="5.0" style="-fx-background-color: #48A5EA;" VBox.vgrow="NEVER">
+      <padding>
+        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+      </padding>
+    </HBox>
+  </children>
+</VBox>
