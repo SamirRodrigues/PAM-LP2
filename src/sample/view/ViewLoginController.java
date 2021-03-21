@@ -24,8 +24,8 @@ public class ViewLoginController {
             Parent photographerViewParent = FXMLLoader.load(getClass().getResource("photographerView.fxml")); // Carregando o arquivo fxml
             Scene photographerViewScene = new Scene(photographerViewParent); // Colocando em uma nova scene
 
-
             Stage newWindow = new Stage();
+            newWindow.setTitle("Photograper View");
             newWindow.setScene(photographerViewScene);
             newWindow.show();
 
@@ -41,6 +41,7 @@ public class ViewLoginController {
             Scene agencyViewScene = new Scene(agencyViewParent); // Colocando em uma nova scene
 
             Stage newWindow = new Stage();
+            newWindow.setTitle("Agency View");
             newWindow.setScene(agencyViewScene);
             newWindow.show();
         }

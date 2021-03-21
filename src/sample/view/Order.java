@@ -4,10 +4,10 @@ import javafx.beans.property.SimpleStringProperty;
 
 public class Order {
 
-    private SimpleStringProperty name;
+    private final SimpleStringProperty name;
     private int id;
     private int pack;
-    private SimpleStringProperty description;
+    private final SimpleStringProperty description;
 
     public String getDescription() { return description.get(); }
 
@@ -34,5 +34,12 @@ public class Order {
         this.id = id;
         this.pack = pack;
         this.description = new SimpleStringProperty("Empty");
+    }
+
+    public Order() {
+        this.name = new SimpleStringProperty("");
+        this.id = 0;
+        this.pack = 0;
+        this.description = new SimpleStringProperty("");
     }
 }
